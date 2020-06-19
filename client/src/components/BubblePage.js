@@ -16,6 +16,7 @@ const BubblePage = () => {
       console.log('worked')
       setColorList(res.data)
     })
+    .catch(err => {console.log("Get request did not work")})
   }
 
   useEffect(()=>{

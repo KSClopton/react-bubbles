@@ -10,6 +10,7 @@ const initialColor = {
 
 const ColorList = ({ colors, updateColors }) => {
   const params = useParams();
+  console.log(params)
 
   console.log(colors);
   const [editing, setEditing] = useState(false);
@@ -24,7 +25,7 @@ const ColorList = ({ colors, updateColors }) => {
     e.preventDefault();
 
     axiosWithAuth()
-    .put('http://localhost:5000/api/colors/:id')
+    .put(`http://localhost:5000/api/colors/${params.id}`)
     .then(res => {window.location.assign('/BubblePage')})
     // Make a put request to save your updated color
     // think about where will you get the id from...
@@ -34,7 +35,7 @@ const ColorList = ({ colors, updateColors }) => {
   const deleteColor = color => {
     // make a delete request to delete this color
     axiosWithAuth()
-    .delete('http://localhost:5000/api/colors/:id')
+    .delete(`http://localhost:5000/api/colors/${params.id}`)
     .then(res => {window.location.assign('/BubblePage')})
   };
 
